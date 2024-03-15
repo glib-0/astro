@@ -622,8 +622,10 @@ const onScrollEnd = () => {
 	// "scrollend" events. To avoid redundant work and expensive calls to
 	// `replaceState()`, we simply check that the values are different before
 	// updating.
-	if (scrollX !== history.state.scrollX || scrollY !== history.state.scrollY) {
-		updateScrollPosition({ scrollX, scrollY });
+	if (history.state) {
+		if (scrollX !== history.state.scrollX || scrollY !== history.state.scrollY) {
+			updateScrollPosition({ scrollX, scrollY });
+		}
 	}
 };
 
